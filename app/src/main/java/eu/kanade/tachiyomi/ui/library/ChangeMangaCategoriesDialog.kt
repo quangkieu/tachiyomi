@@ -40,13 +40,13 @@ class ChangeMangaCategoriesDialog<T>(bundle: Bundle? = null) :
                 allowEmptySelection = true
             ) { _, selections, _ ->
                 val newCategories = selections.map { categories[it] }
-                (targetController as? Listener)?.updateCategoriesForMangas(mangas, newCategories)
+                (targetController as? Listener)?.updateCategoriesForMangas(mangas, newCategories, preselected)
             }
             .positiveButton(android.R.string.ok)
             .negativeButton(android.R.string.cancel)
     }
 
     interface Listener {
-        fun updateCategoriesForMangas(mangas: List<Manga>, categories: List<Category>)
+        fun updateCategoriesForMangas(mangas: List<Manga>, categories: List<Category>, preselected: List<Category>)
     }
 }
